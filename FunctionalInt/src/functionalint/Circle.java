@@ -24,7 +24,7 @@ public class Circle implements Mathematics{
     
 
     @Override
-    public double calculate() {
-        return length(50);
+    public double calculate(double r) {
+        return length(r);
     }
 }
