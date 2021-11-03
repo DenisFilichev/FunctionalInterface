@@ -10,11 +10,13 @@ package functionalint;
  * @author Denis
  */
 public class Main {
+    double r = 50; //задаем радиус окружности
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
         Main main = new Main();
         main.innerClass(); //реализация вложенного класса
         main.anonimClass(); //реазизация анонимного класса
@@ -28,21 +30,21 @@ public class Main {
         Inner inner = new Inner();
         System.out.println("-----------------------------------------------");
         System.out.println("Вложенный класс:");
-        System.out.println("Длина окружности:" + inner.calculate());
+        System.out.println("Длина окружности:" + inner.calculate(r));
     }
     
     //Метод вызывающий методы анонимного класса
     private void anonimClass (){
         Mathematics mathematics = new Mathematics() {
             @Override
-            public double calculate() {
+            public double calculate(double r) {
                 Circle circle = new Circle();
-                return circle.length(50);
+                return circle.length(r);
             }
         };
         System.out.println("-----------------------------------------------");
         System.out.println("Анонимный класс:");
-        System.out.println("Площадь окружности: " + Mathematics.ceil(mathematics.calculate()));
+        System.out.println("Площадь окружности: " + Mathematics.ceil(mathematics.calculate(r)));
     }
     
     private void staticMeth (){
@@ -56,27 +58,26 @@ public class Main {
         Mathematics math = new Circle();
         System.out.println("-----------------------------------------------");
         System.out.println("Метод экземпляра:");
-        System.out.println("Длина окружности:" + math.calculate());
+        System.out.println("Длина окружности:" + math.calculate(r));
         
     }
     
     private void lamba(){
-        Mathematics mathematics = () -> {
+        Mathematics mathematics = (r) -> {
             Circle circle = new Circle();
             return circle.length(50);
         };
         System.out.println("-----------------------------------------------");
         System.out.println("Лямбда :");
-        System.out.println("Длина окружности:" + mathematics.calculate());
+        System.out.println("Длина окружности:" + mathematics.calculate(r));
     }
     
     private class Inner implements Mathematics{
 
         @Override
-        public double calculate() {
+        public double calculate(double r) {
             Circle circle = new Circle();
-            return circle.length(50);
+            return circle.length(r);
         }
-
     }
 }

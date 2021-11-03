@@ -14,7 +14,7 @@ public interface Mathematics {
     static double p = 3.14;
     static double e = 2.718;
     
-    public double calculate ();
+    public double calculate (double r);
     
     static double ceil (double number){
         int x = 5;
